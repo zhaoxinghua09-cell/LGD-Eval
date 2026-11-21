@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """生成 TC-01 合成样例记录（占位指纹，无真实数据）。"""
+import copy
 import json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "eval-records")
@@ -74,3 +75,11 @@ for name, rec in [("sample_pass.json", passed), ("sample_unscored.json", unscore
     with open(os.path.join(OUT, name), "w", encoding="utf-8") as f:
         json.dump(rec, f, ensure_ascii=False, indent=2)
     print("wrote", name)
+
+# 必拒探针：绑定与证据齐全，但把 risk_level 混写到顶层（违反 V3 字段分离）→ rejected。
+rejected = copy.deepcopy(passed)
+rejected["eval_id"] = "eval-20261120-004"
+rejected["risk_level"] = "high"  # 顶层混写；风险等级只允许位于 score.risk_level
+with open(os.path.join(OUT, "sample_rejected.json"), "w", encoding="utf-8") as f:
+    json.dump(rejected, f, ensure_ascii=False, indent=2)
+print("wrote sample_rejected.json")

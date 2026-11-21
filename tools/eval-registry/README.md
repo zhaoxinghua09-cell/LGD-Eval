@@ -11,11 +11,12 @@ tools/eval-registry/
 ├── validate_eval_record.py   # TC-01 登记记录校验脚本（Python 标准库，离线）
 ├── metrics_contract.json     # 评测指标契约（指标族/类型/聚合/等级策略）
 ├── make_samples.py           # 生成三份合成样例记录（占位指纹）
-├── selfcheck.py              # 本地自检：断言三份评测样例预期状态
+├── selfcheck.py              # 本地自检：断言四份评测样例预期状态
 └── eval-records/
     ├── sample_pass.json              # 绑定齐全、证据齐全 → pass
     ├── sample_unscored.json           # 绑定缺失 → incomplete
-    └── sample_evidence_missing.json  # 绑定齐全但缺证据 → unscored
+    ├── sample_evidence_missing.json  # 绑定齐全但缺证据 → unscored
+    └── sample_rejected.json           # 顶层混写 risk_level → rejected
 ```
 
 委托/身份校验样例属另一工件（TC-02），不在本目录；本自检不引用身份校验器。
@@ -24,7 +25,7 @@ tools/eval-registry/
 
 ```powershell
 cd tools/eval-registry
-python selfcheck.py            # 一键复跑三份样例断言（推荐先跑）
+python selfcheck.py            # 一键复跑四份样例断言（推荐先跑）
 python make_samples.py         # 重新生成合成样例（覆盖 eval-records/）
 python validate_eval_record.py eval-records/sample_pass.json
 ```
@@ -49,6 +50,7 @@ python validate_eval_record.py eval-records/sample_pass.json
 - 脚本不联网、不读取或修改远程仓库、不创建分支/PR/Release；
 - 样例标识为 `example/…`、`did:example:…`、占位 SHA/指纹，禁止用于真实评测集；
 - 标准草案引用不代表兼容认证或被采纳；对外公开 schema、投稿标准组织、邀请外部复跑均须单独审批；
+- **PASS 窄边界（原文照抄，不得扩写）**：A `pass` means: within the observed evidence boundary, no violation was detected. It does not claim the agent was correct, safe, or wise; that the recorded inputs were true or complete; or that any real-world outcome followed.（在已观测证据边界内未检出违规；不主张被测对象正确/安全/明智，不主张记录输入真实或完整，也不代表任何真实结果发生。）
 - 本目录代码随仓库根 LICENSE（MIT）；指标名/阈值待与评测套件共同定稿。
 
 ## 已知缺口（正文自述，不藏附录）

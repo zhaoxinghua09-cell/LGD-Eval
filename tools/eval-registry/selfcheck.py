@@ -2,7 +2,7 @@
 """
 selfcheck.py — eval-registry 本地自检（离线，Python 标准库）。
 
-仅校验 TC-01 评测登记样例（pass / incomplete / unscored）。
+仅校验 TC-01 评测登记样例（pass / incomplete / unscored / rejected）。
 委托/身份样例属另一工件，不在本目录，故本自检不引用身份校验器。
 不联网、不读取或修改远程仓库、不创建分支/PR/Release。
 
@@ -21,6 +21,7 @@ CASES = [
     ("eval-records/sample_pass.json", "pass"),
     ("eval-records/sample_unscored.json", "incomplete"),
     ("eval-records/sample_evidence_missing.json", "unscored"),
+    ("eval-records/sample_rejected.json", "rejected"),
 ]
 
 
