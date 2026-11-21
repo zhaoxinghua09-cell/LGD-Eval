@@ -1,0 +1,72 @@
+{
+  "eval_id": "eval-20261120-001",
+  "schema_version": "1.0",
+  "run_at": "2026-11-20T10:00:00+08:00",
+  "trigger": "regression",
+  "target": {
+    "repo": "example/uibc-adapter-sample",
+    "commit_sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "package_name": "example-adapter",
+    "package_version": "0.1.0",
+    "source_fingerprint_sha256": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "engine": {
+    "name": "lgd-gate",
+    "version": "0.0.0",
+    "commit_sha": "cccccccccccccccccccccccccccccccccccccccc",
+    "rule_set_version": "r0.0",
+    "rule_fingerprint": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+  },
+  "benchmark": {
+    "suite": "uibc-conformance",
+    "version": "0.0.0",
+    "dataset_version": "ds0.0",
+    "split": "internal",
+    "blind": false,
+    "case_kind": "synthetic"
+  },
+  "verifier": {
+    "identity": "self",
+    "relation": "self",
+    "independent": false,
+    "method": "local conformance suite, synthetic cases"
+  },
+  "score": {
+    "metrics": {
+      "compat_pass": 6,
+      "compat_total": 7,
+      "regression_pass": 7,
+      "regression_total": 7
+    },
+    "grade": "C",
+    "risk_level": "medium"
+  },
+  "evidence": {
+    "command": "example-cli run --suite uibc-conformance --dataset ds0.0 --record eval-20261120-001",
+    "log_ref": "internal://eval/20261120-001",
+    "artifacts": [
+      {
+        "name": "conformance-report.json",
+        "sha256": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "ref": "internal://eval/20261120-001/report.json"
+      }
+    ],
+    "coverage": {
+      "cases": 7,
+      "passed": 6,
+      "failed": 0,
+      "untested": 1
+    }
+  },
+  "authorization": {
+    "license": "Apache-2.0",
+    "consent": "not-required",
+    "data_scope": "synthetic internal-only",
+    "privacy_notes": "no customer data"
+  },
+  "history": {
+    "prior_eval_id": null,
+    "rerun_reason": "baseline template",
+    "impact_note": "n/a"
+  }
+}

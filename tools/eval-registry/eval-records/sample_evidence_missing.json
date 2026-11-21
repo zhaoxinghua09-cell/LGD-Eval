@@ -1,0 +1,56 @@
+{
+  "eval_id": "eval-20261120-003",
+  "schema_version": "1.0",
+  "run_at": "2026-11-20T11:00:00+08:00",
+  "trigger": "commit-push",
+  "target": {
+    "repo": "example/registry-adapter",
+    "commit_sha": "ffffffffffffffffffffffffffffffffffffffff",
+    "package_name": "registry-adapter",
+    "package_version": "0.2.0",
+    "source_fingerprint_sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+  },
+  "engine": {
+    "name": "lgd-gate",
+    "version": "0.1.0",
+    "commit_sha": "7777777777777777777777777777777777777777",
+    "rule_set_version": "r0.1",
+    "rule_fingerprint": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+  },
+  "benchmark": {
+    "suite": "uibc-conformance",
+    "version": "0.1.0",
+    "dataset_version": "ds0.1",
+    "split": "internal",
+    "blind": false,
+    "case_kind": "synthetic"
+  },
+  "verifier": {
+    "identity": "self",
+    "relation": "self",
+    "independent": false,
+    "method": "not run yet"
+  },
+  "score": {
+    "metrics": {},
+    "grade": null,
+    "risk_level": "unknown"
+  },
+  "evidence": {
+    "command": "",
+    "log_ref": "",
+    "artifacts": [],
+    "coverage": {}
+  },
+  "authorization": {
+    "license": "MIT",
+    "consent": "not-required",
+    "data_scope": "synthetic internal-only",
+    "privacy_notes": ""
+  },
+  "history": {
+    "prior_eval_id": null,
+    "rerun_reason": "",
+    "impact_note": ""
+  }
+}

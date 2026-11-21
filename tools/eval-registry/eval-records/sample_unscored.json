@@ -1,0 +1,56 @@
+{
+  "eval_id": "eval-20261120-002",
+  "schema_version": "1.0",
+  "run_at": "2026-11-20T10:30:00+08:00",
+  "trigger": "manual",
+  "target": {
+    "repo": "example/draft-adapter",
+    "commit_sha": "",
+    "package_name": "",
+    "package_version": "",
+    "source_fingerprint_sha256": ""
+  },
+  "engine": {
+    "name": "lgd-gate",
+    "version": "",
+    "commit_sha": "",
+    "rule_set_version": "",
+    "rule_fingerprint": ""
+  },
+  "benchmark": {
+    "suite": "uibc-conformance",
+    "version": "",
+    "dataset_version": "",
+    "split": "internal",
+    "blind": false,
+    "case_kind": "synthetic"
+  },
+  "verifier": {
+    "identity": "self",
+    "relation": "self",
+    "independent": false,
+    "method": "draft record"
+  },
+  "score": {
+    "metrics": {},
+    "grade": null,
+    "risk_level": "unknown"
+  },
+  "evidence": {
+    "command": "",
+    "log_ref": "",
+    "artifacts": [],
+    "coverage": {}
+  },
+  "authorization": {
+    "license": "",
+    "consent": "unknown",
+    "data_scope": "",
+    "privacy_notes": ""
+  },
+  "history": {
+    "prior_eval_id": null,
+    "rerun_reason": "",
+    "impact_note": ""
+  }
+}

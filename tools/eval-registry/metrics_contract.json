@@ -1,0 +1,51 @@
+{
+  "contract_version": "0.1-draft",
+  "note": "评测指标契约本地草案；指标名/聚合/等级策略待与评测套件对齐。A 级结论仅可由非关联独立验证给出。",
+  "families": [
+    {
+      "family": "identity",
+      "description": "身份绑定、凭证校验、委托链与权限执行",
+      "metrics": [
+        {"key": "identity_bind_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "标识与凭证绑定一致的用例占比"},
+        {"key": "credential_verify_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "签名/有效期/受众/主体校验通过占比"},
+        {"key": "delegation_chain_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "委托链可追溯且断链/越权被拒的用例占比"},
+        {"key": "scope_enforce_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "允许清单外动作被拒绝的用例占比"},
+        {"key": "revocation_honored", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": true, "description": "吊销凭证即时失效是否被校验方遵守"}
+      ]
+    },
+    {
+      "family": "evaluation",
+      "description": "兼容、回归、对抗与红队覆盖",
+      "metrics": [
+        {"key": "compat_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "互操作/兼容用例通过占比"},
+        {"key": "regression_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "回归用例通过占比"},
+        {"key": "adversarial_pass", "type": "ratio", "value_type": "float", "aggregation": "passed/total", "independent_required_for_A": true, "description": "对抗/红队用例拦截占比"},
+        {"key": "redteam_covered", "type": "count", "value_type": "integer", "aggregation": "covered/total", "independent_required_for_A": false, "description": "对齐 OWASP/ATLAS 清单的已覆盖条目数"}
+      ]
+    },
+    {
+      "family": "evidence",
+      "description": "证据闭环与制品完整性",
+      "metrics": [
+        {"key": "evidence_artifacts_present", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": false, "description": "证据制品清单与指纹是否齐备"},
+        {"key": "fingerprint_match", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": false, "description": "记录指纹与制品指纹是否一致"},
+        {"key": "attestation_present", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": false, "description": "是否存在可核验证明记录"}
+      ]
+    },
+    {
+      "family": "governance",
+      "description": "规则版本绑定与历史追溯",
+      "metrics": [
+        {"key": "rule_version_bound", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": false, "description": "规则集版本与指纹是否绑定到记录"},
+        {"key": "history_trace_present", "type": "bool", "value_type": "bool", "aggregation": "all", "independent_required_for_A": false, "description": "重测是否关联前置记录与影响说明"}
+      ]
+    }
+  ],
+  "grade_policy": {
+    "A": "仅 non-affiliated 独立验证；身份/评测核心指标达到阈值且证据闭环",
+    "B": "内部留证或跨账号复核；证据可追溯",
+    "C": "同生态自评；缺独立复核",
+    "D": "无验证证据",
+    "unscored": "证据不足，不给等级"
+  }
+}
